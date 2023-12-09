@@ -121,11 +121,10 @@ return {
 
     -- configure astrojs language server
     lspconfig["astro"].setup {
+      capabilities = capabilities,
       cmd = { "astro-ls", "--stdio" },
       filetypes = { "astro" },
-      init_options = {
-        typescript = {},
-      },
+      init_options = {},
     }
 
     -- configure lua server (with special settings)
