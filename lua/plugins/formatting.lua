@@ -1,6 +1,5 @@
 return {
   "stevearc/conform.nvim",
-  branch = "harpoon2",
   lazy = true,
   event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
   config = function()
