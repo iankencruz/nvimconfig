@@ -24,6 +24,11 @@ return {
           },
         },
       },
+      pickers = {
+        find_files = {
+          theme = "dropdown",
+        },
+      },
     }
 
     telescope.load_extension "fzf"

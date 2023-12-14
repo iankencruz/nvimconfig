@@ -61,6 +61,8 @@ return {
       "<cmd>lua require('harpoon.ui').nav_file(5)<cr>",
       { desc = "Toggle Harpoon Quick Menu" }
     )
+
+    keymap.set("n", "<leader>t1", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>")
   end,
   -- saves the harpoon file upon every change. Disabling is unrecommended
   save_on_change = true,
