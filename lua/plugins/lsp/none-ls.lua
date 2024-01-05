@@ -33,8 +33,13 @@ return {
       root_dir = null_ls_utils.root_pattern(".null-ls-root", "Makefile", ".git", "package.json"),
       -- setup formatters & linters
       sources = {
+
+        formatting.goimports,
+        formatting.gofumpt,
+
         --  to disable file types use
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
+
         formatting.prettier.with {
           extra_filetypes = { "svelte" },
         }, -- js/ts formatter
