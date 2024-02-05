@@ -8,7 +8,6 @@
 --
 -- File: plugins/telescope.lua
 -- Description: nvim-telescope config
-
 return { {
   -- Telescope
   -- Find, Filter, Preview, Pick. All lua, all the time.
