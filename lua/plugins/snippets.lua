@@ -62,6 +62,17 @@ return {
             { i(1, "main"), i(2, "main"), i(3, "body") }
           )
         ),
+        s(
+          { trig = "struct", name = "Create new Struct" },
+          fmt(
+            [[
+              type {} struct {{
+                  {}
+              }}
+            ]],
+            { i(1, ""), i(2, ""), }
+          )
+        ),
       },
       -- ============================
       -- html snippets
