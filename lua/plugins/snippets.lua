@@ -42,35 +42,50 @@ return {
           { trig = "err", name = "error check" },
           fmt(
             [[
-              if {} != nil {{
-                return {}
-              }}
+              if <> != nil {
+                return <>
+              }
             ]],
-            { i(1, "err"), i(2, "body") }
+            { i(1, "err"), i(2, "body") },
+            { delimiters = "<>" }
           )
         ),
         s(
           { trig = "main", name = "New Main Function Boilerplate" },
           fmt(
             [[
-              package {}
+              package <>
 
-              func {}() {{
-                {}
-              }}
+              func <>() {
+                <>
+              }
             ]],
-            { i(1, "main"), i(2, "main"), i(3, "body") }
+            { i(1, "main"), i(2, "main"), i(3, "body") },
+            { delimiters = "<>" }
           )
         ),
         s(
           { trig = "struct", name = "Create new Struct" },
           fmt(
             [[
-              type {} struct {{
-                  {}
-              }}
+              type <> struct {
+                  <>
+              }
             ]],
-            { i(1, ""), i(2, ""), }
+            { i(1, ""), i(2, ""), },
+            { delimiters = "<>" }
+          )
+        ),
+        s(
+          { trig = "method", name = "Create new Struct method" },
+          fmt(
+            [[
+              func (<> *<>) <>(<>) <> {
+                  <>
+              }
+            ]],
+            { i(1, "m"), i(2, "method"), i(3, "title"), i(4, ""), i(5, ""), i(6, "") },
+            { delimiters = "<>" }
           )
         ),
       },
