@@ -88,3 +88,11 @@ vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document
   { desc = "Document Diagnostics" })
 vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end, { desc = "Quickfix" })
 vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end, { desc = "Location List" })
+
+
+
+-- Go to preview
+vim.keymap.set("n", "gd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
+vim.keymap.set("n", "gD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", { noremap = true })
+vim.keymap.set("n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
+vim.keymap.set("n", "gx", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })

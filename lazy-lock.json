@@ -15,6 +15,7 @@
   "github-nvim-theme": { "branch": "main", "commit": "d92e1143e5aaa0d7df28a26dd8ee2102df2cadd8" },
   "gitsigns.nvim": { "branch": "main", "commit": "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae" },
   "go.nvim": { "branch": "master", "commit": "096f65692034022c963b55f493961a8a1d861ba4" },
+  "goto-preview": { "branch": "main", "commit": "16ec236fabb40b2cebfe283b1d701338886462db" },
   "guihua.lua": { "branch": "master", "commit": "9fb6795474918b492d9ab01b1ebaf85e8bf6fe0b" },
   "harpoon": { "branch": "master", "commit": "ccae1b9bec717ae284906b0bf83d720e59d12b91" },
   "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
