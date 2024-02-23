@@ -27,8 +27,11 @@ vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- Close all windows and exit from Neovim with <leader> and q
 vim.keymap.set("n", "<leader>q", ":qa!<CR>", {})
 
--- Fast saving with <leader> and s
-vim.keymap.set("n", "<leader>s", ":w<CR>", {})
+-- Fast saving with <leader> and w
+vim.keymap.set("n", "<leader>w", ":w<CR>", {})
+
+-- Fast Saving and quit with <leader>, w and s
+vim.keymap.set("n", "<leader>wq", ":wq<CR>", {})
 
 -- Move around splits
 vim.keymap.set("n", "<C-h>", "<C-w>h", {})
@@ -96,3 +99,7 @@ vim.keymap.set("n", "gd", "<cmd>lua require('goto-preview').goto_preview_definit
 vim.keymap.set("n", "gD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", { noremap = true })
 vim.keymap.set("n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
 vim.keymap.set("n", "gx", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
+
+-- open definition in new split
+vim.keymap.set('n', '<LEADER>gd', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>',
+  { noremap = true, silent = true })
