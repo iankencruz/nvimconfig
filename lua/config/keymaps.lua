@@ -95,11 +95,11 @@ vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist"
 
 
 -- Go to preview
-vim.keymap.set("n", "gd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
-vim.keymap.set("n", "gD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", { noremap = true })
-vim.keymap.set("n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>gd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>gD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
 vim.keymap.set("n", "gx", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
 
 -- open definition in new split
-vim.keymap.set('n', '<LEADER>gd', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>',
+vim.keymap.set('n', 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>',
   { noremap = true, silent = true })
