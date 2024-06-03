@@ -103,3 +103,14 @@ vim.keymap.set("n", "gx", "<cmd>lua require('goto-preview').close_all_win()<CR>"
 -- open definition in new split
 vim.keymap.set('n', 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>',
   { noremap = true, silent = true })
+
+
+
+-- Telescope
+-- vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
+
+-- open file_browser with the path of the current buffer
+vim.keymap.set("n", "<leader>fe", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
+
+-- open file_browser at projects folder
+vim.keymap.set("n", "<leader>fp", ":Telescope file_browser path=~/Documents/Projects/ select_buffer=true<CR>")
