@@ -39,6 +39,9 @@ autocmd("BufWritePre", {
   command = ":silent lua vim.lsp.buf.format()"
 })
 
+-- Auto format on save for templ file
+autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = vim.lsp.buf.format })
+
 -- Don"t auto commenting new lines
 autocmd("BufEnter", {
   pattern = "",

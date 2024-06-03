@@ -72,7 +72,13 @@ return { {
       gopls = {},
       vimls = {},
       yamlls = {},
-      astro = {}
+      astro = {},
+      tailwindcss = {
+        filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+        init_options = { userLanguages = { templ = "html" } },
+      },
+      templ = {},
+      html = {},
     },
     -- you can do any additional lsp server setup here
     -- return true if you don"t want this server to be setup with lspconfig
