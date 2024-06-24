@@ -26,9 +26,10 @@ return {
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
-        ['<leader>W'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>!w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
         ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+        ['<leader>F'] = { name = '[F]ormat', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({

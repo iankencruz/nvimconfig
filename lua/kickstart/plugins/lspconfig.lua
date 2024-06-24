@@ -80,7 +80,7 @@ return {
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>!ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
@@ -175,7 +175,12 @@ return {
           filetypes_include = {},
           -- to fully override the default_config, change the below
           -- filetypes = {}
+          --         filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+          filetypes = { 'templ', 'astro', 'javascript', 'typescript', 'react' },
+          init_options = { userLanguages = { templ = 'html' } },
         },
+
+        html = {},
 
         -- Golang LSP
         gopls = {
@@ -254,6 +259,7 @@ return {
         'gofumpt',
         'gomodifytags',
         'impl',
+        'prettier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -14,6 +14,9 @@ vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 -- Close all windows and exit from Neovim with <leader> and q
 vim.keymap.set('n', '<leader>q', ':qa!<CR>', {})
 
+-- Fast saving with <leader> and w
+vim.keymap.set('n', '<leader>w', ':w<CR>', {})
+
 -- window management
 vim.keymap.set('n', '<leader>sv', '<C-w>v') -- split window vertically
 vim.keymap.set('n', '<leader>sh', '<C-w>s') -- split window horizontally
@@ -53,6 +56,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Tailwind Tools
+vim.keymap.set('n', '<leader>Fc', ':TailwindConcealToggle<CR>', { desc = 'toggles conceal.' })
+vim.keymap.set('n', '<leader>Fa', ':TailwindSort<CR>', { desc = 'sorts all classes in the current buffer.' })
+vim.keymap.set('n', '<leader>Fs', ':TailwindSortSelection<CR>', { desc = 'sorts selected classes in visual mode.' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -67,4 +75,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et'
