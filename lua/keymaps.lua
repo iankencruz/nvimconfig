@@ -61,6 +61,8 @@ vim.keymap.set('n', '<leader>Fc', ':TailwindConcealToggle<CR>', { desc = 'toggle
 vim.keymap.set('n', '<leader>Fa', ':TailwindSort<CR>', { desc = 'sorts all classes in the current buffer.' })
 vim.keymap.set('n', '<leader>Fs', ':TailwindSortSelection<CR>', { desc = 'sorts selected classes in visual mode.' })
 
+
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

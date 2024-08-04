@@ -27,6 +27,11 @@ return {
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
+      {
+        'isak102/telescope-git-file-history.nvim',
+        dependencies = { 'tpope/vim-fugitive' },
+      },
+
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
@@ -75,6 +80,7 @@ return {
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'git_file_history')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
