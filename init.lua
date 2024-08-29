@@ -113,3 +113,6 @@ require 'lazy-plugins'
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ 'BufWritePre' }, { pattern = { '*.templ', '*.astro', '*.html', '*.jsx', '*.tsx' }, command = ':silent :TailwindSort' })
+
+-- templ autocommand
+autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = vim.lsp.buf.format })

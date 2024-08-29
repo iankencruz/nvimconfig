@@ -37,6 +37,7 @@ return {
         yaml = { 'prettier' },
         markdown = { 'prettier' },
         graphql = { 'prettier' },
+        templ = { 'templ' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

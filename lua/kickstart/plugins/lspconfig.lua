@@ -164,6 +164,9 @@ return {
         -- Typescript LSP
         tsserver = {},
 
+        -- GraphQL
+        graphql = {},
+
         -- Astro LSP
         astro = {},
 
@@ -180,11 +183,19 @@ return {
           init_options = { userLanguages = { templ = 'html' } },
         },
 
-        html = {},
+        -- templ LSP
+        html = {
+          filetypes = { 'html', 'templ' },
+        },
+
+        -- htmx LSP
+        htmx = {
+          filetypes = { 'html', 'templ' },
+        },
 
         -- Golang LSP
         gopls = {
-          filetypes = { 'go', 'gomod', 'gowork', 'gotempl' },
+          filetypes = { 'go', 'gomod', 'gowork', 'templ' },
           settings = {
             gopls = {
               gofumpt = true,
