@@ -22,9 +22,11 @@ return {
         'dockerfile',
         'astro',
         'go',
+        'templ',
         'gomod',
         'gowork',
         'gosum',
+        'templ',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,

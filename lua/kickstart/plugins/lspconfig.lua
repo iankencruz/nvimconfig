@@ -38,6 +38,14 @@ return {
       -- Thus, Language Servers are external tools that must be installed separately from
       -- Neovim. This is where `mason` and related plugins come into play.
       --
+
+      local on_attach = function(_, bufnr)
+        local set = vim.keymap.set
+        local keybind = function(keys, func, desc)
+          set('n', keys, func, { buffer = bufnr, desc = desc, noremap = true, silent = true })
+        end
+      end
+
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
@@ -183,22 +191,30 @@ return {
           init_options = { userLanguages = { templ = 'html' } },
         },
 
-        -- templ LSP
         html = {
+          cmd = { 'vscode-html-language-server', '--stdio' },
           filetypes = { 'html', 'templ' },
+          single_file_support = true,
+          init_options = {
+            provideFormatter = true,
+            embeddedLanguages = { css = true, javascript = true },
+            configurationSection = { 'html', 'css', 'javascript', 'templ' },
+          },
         },
 
-        -- htmx LSP
-        htmx = {
-          filetypes = { 'html', 'templ' },
+        -- emmet_language_server {},
+
+        -- templ LSP
+        templ = {
+          filetypes = { 'templ', 'html' },
         },
 
         -- Golang LSP
         gopls = {
-          filetypes = { 'go', 'gomod', 'gowork', 'templ' },
+          filetypes = { 'go', 'gomod', 'gowork' },
           settings = {
             gopls = {
-              gofumpt = true,
+              gofumpt = false,
               codelenses = {
                 gc_details = false,
                 generate = true,
@@ -229,7 +245,7 @@ return {
               completeUnimported = true,
               staticcheck = true,
               directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
-              semanticTokens = true,
+              semanticTokens = false,
             },
           },
         },
@@ -271,16 +287,20 @@ return {
         'gomodifytags',
         'impl',
         'prettier',
+        'prettierd',
+        'html',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        ensure_installed = { 'html', 'templ' },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
+            on_attach = on_attach
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,

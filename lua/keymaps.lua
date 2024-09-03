@@ -12,16 +12,16 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- Close all windows and exit from Neovim with <leader> and q
-vim.keymap.set('n', '<leader>q', ':qa!<CR>', {})
+vim.keymap.set('n', '<leader>q', ':qa!<CR>', { desc = 'Close all buffers' })
 
 -- Fast saving with <leader> and w
-vim.keymap.set('n', '<leader>w', ':w<CR>', {})
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save Buffer' })
 
 -- window management
-vim.keymap.set('n', '<leader>sv', '<C-w>v') -- split window vertically
-vim.keymap.set('n', '<leader>sh', '<C-w>s') -- split window horizontally
-vim.keymap.set('n', '<leader>se', '<C-w>=') -- make split windows equal width & height
-vim.keymap.set('n', '<leader>sx', ':close<CR>') -- close current split window
+vim.keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split Window Vertically' }) -- split window vertically
+vim.keymap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split Window Horizontally' }) -- split window horizontally
+vim.keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Resize splits equally' }) -- make split windows equal width & height
+vim.keymap.set('n', '<leader>sx', ':close<CR>', { desc = 'Resize splits equally' }) -- close current split window
 
 -- better indenting
 vim.keymap.set('v', '<', '<gv')
@@ -60,8 +60,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>Fc', ':TailwindConcealToggle<CR>', { desc = 'toggles conceal.' })
 vim.keymap.set('n', '<leader>Fa', ':TailwindSort<CR>', { desc = 'sorts all classes in the current buffer.' })
 vim.keymap.set('n', '<leader>Fs', ':TailwindSortSelection<CR>', { desc = 'sorts selected classes in visual mode.' })
-
-
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
