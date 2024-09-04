@@ -3,6 +3,17 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
+      {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
+        lazy = true,
+        config = false,
+        init = function()
+          -- Disable automatic setup, we are doing it manually
+          vim.g.lsp_zero_extend_cmp = 0
+          vim.g.lsp_zero_extend_lspconfig = 0
+        end,
+      },
       -- Snippet Engine & its associated nvim-cmp source
       {
         'L3MON4D3/LuaSnip',
@@ -26,17 +37,6 @@ return {
           --   end,
           -- },
         },
-      },
-      {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        lazy = true,
-        config = false,
-        init = function()
-          -- Disable automatic setup, we are doing it manually
-          vim.g.lsp_zero_extend_cmp = 0
-          vim.g.lsp_zero_extend_lspconfig = 0
-        end,
       },
       'saadparwaiz1/cmp_luasnip',
 
@@ -109,23 +109,15 @@ return {
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
         sources = {
+          {
+            name = 'lazydev',
+            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+            group_index = 0,
+          },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
         },
-      }
-    end,
-  },
-  {
-    'mfussenegger/nvim-lint',
-    config = function()
-      local lint = require 'lint'
-      lint.linters_by_ft = {
-        javascript = { 'eslint_d' },
-        typescript = { 'eslint_d' },
-        javascriptreact = { 'eslint_d' },
-        typescriptreact = { 'eslint_d' },
-        markdown = { 'vale' },
       }
     end,
   },

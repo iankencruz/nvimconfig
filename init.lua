@@ -105,6 +105,9 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
+-- Add templ extension
+vim.filetype.add { extension = { templ = 'templ' } }
+
 -- Autocommands
 -- Auto format on save for templ file
 local autocmd = vim.api.nvim_create_autocmd
@@ -115,18 +118,5 @@ autocmd({ 'BufWritePre' }, { pattern = { '*.templ', '*.astro', '*.html', '*.jsx'
 -- templ autocommand
 autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = vim.lsp.buf.format })
 
--- Add templ extension
-vim.filetype.add { extension = { templ = 'templ' } }
-
--- setup oil
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
--- Autocommands
--- Auto format on save for templ file
-local autocmd = vim.api.nvim_create_autocmd
-
-autocmd({ 'BufWritePre' }, { pattern = { '*.templ', '*.astro', '*.html', '*.jsx', '*.tsx' }, command = ':silent :TailwindSort' })
-
--- templ autocommand
-autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = vim.lsp.buf.format })
