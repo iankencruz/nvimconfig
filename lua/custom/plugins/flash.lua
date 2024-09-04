@@ -10,6 +10,36 @@ return {
         keys = {},
       },
     },
+    -- options used for treesitter selections
+    -- `require("flash").treesitter()`
+    treesitter = {
+      labels = 'abcdefghijklmnopqrstuvwxyz',
+      jump = { pos = 'range', autojump = true },
+      search = { incremental = false },
+      label = { before = true, after = true, style = 'inline' },
+      highlight = {
+        backdrop = false,
+        matches = false,
+      },
+    },
+    treesitter_search = {
+      jump = { pos = 'range' },
+      search = { multi_window = true, wrap = true, incremental = false },
+      remote_op = { restore = true },
+      label = { before = true, after = true, style = 'inline' },
+    },
+    prompt = {
+      enabled = true,
+      prefix = { { '⚡', 'FlashPromptIcon' } },
+      win_config = {
+        relative = 'editor',
+        width = 1, -- when <=1 it's a percentage of the editor width
+        height = 1,
+        row = -1, -- when negative it's an offset from the bottom
+        col = 0, -- when negative it's an offset from the right
+        zindex = 1000,
+      },
+    },
   },
   -- stylua: ignore
   keys = {

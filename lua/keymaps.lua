@@ -1,4 +1,4 @@
--- [[ Basic Keymaps ]]
+--x[[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
 -- general KEYMAPS
@@ -49,7 +49,19 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---
+
+-- window management
+vim.keymap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split Window [V]ertically' }) -- split window vertically
+vim.keymap.set('n', '<leader>sb', '<C-w>s', { desc = 'Split Window [B]elow' }) -- split window horizontally
+vim.keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Adjust Window Size [E]venly' }) -- make split windows equal width & height
+vim.keymap.set('n', '<leader>sx', ':close<CR>', { desc = 'Close Current Split Window' }) -- close current split window
+
+-- Resize splits
+vim.keymap.set('n', '<leader>k', '<cmd>resize +2<cr>', { desc = 'Resize Horizontal Split Up' })
+vim.keymap.set('n', '<leader>j', '<cmd>resize -2<cr>', { desc = 'Resize Horizontal Split Down' })
+vim.keymap.set('n', '<leader>h', '<cmd>vertical resize +2<cr>', { desc = 'Resize Vertical Split Right' })
+vim.keymap.set('n', '<leader>l', '<cmd>vertical resize -2<cr>', { desc = 'Resize Vertical Split Left' })
+
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -75,4 +87,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- vim: ts=2 sts=2 sw=2 et'
+-- Tailwind Tools
+vim.keymap.set('n', '<leader>Fc', ':TailwindConcealToggle<CR>', { desc = 'toggles conceal.' })
+vim.keymap.set('n', '<leader>Fa', ':TailwindSort<CR>', { desc = 'sorts all classes in the current buffer.' })
+vim.keymap.set('n', '<leader>Fs', ':TailwindSortSelection<CR>', { desc = 'sorts selected classes in visual mode.' })
+
+-- vim: ts=2 sts=2 sw=2 et

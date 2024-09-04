@@ -1,7 +1,11 @@
 return {
   'folke/trouble.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  opts = {},
+  opts = {
+    auto_close = true,
+    auto_jump = false,
+    auto_preview = true,
+    focus = true,
+  }, -- for default options, refer to the configuration section for custom setup.
   cmd = 'Trouble',
   keys = {
     {
