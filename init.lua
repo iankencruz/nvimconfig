@@ -118,5 +118,8 @@ autocmd({ 'BufWritePre' }, { pattern = { '*.templ', '*.astro', '*.html', '*.jsx'
 -- templ autocommand
 autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = vim.lsp.buf.format })
 
+-- silverstripe filetype set autocmd
+autocmd({ 'BufWinEnter' }, { pattern = '*.ss', command = 'set filetype=html' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -197,7 +197,7 @@ return {
 
         html = {
           cmd = { 'vscode-html-language-server', '--stdio' },
-          filetypes = { 'html', 'templ' },
+          filetypes = { 'html', 'templ', 'ss' },
           single_file_support = true,
           init_options = {
             provideFormatter = true,
@@ -207,7 +207,7 @@ return {
         },
 
         emmet_language_server = {
-          filetypes = { 'templ', 'html', 'astro', 'typescript', 'react' },
+          filetypes = { 'templ', 'html', 'astro', 'typescript', 'react', 'ss' },
         },
 
         -- templ LSP
@@ -256,6 +256,20 @@ return {
             },
           },
         },
+
+        -- intelephense LSP
+        intelephense = {
+          cmd = { 'intelephense', '--stdio' },
+          filetypes = { 'php' },
+          root_dir = function(pattern)
+            local cwd = vim.loop.cwd()
+            local root = lspconfig.util.root_pattern('composer.json', '.git')(pattern)
+
+            -- prefer cwd if root is a descendant
+            return lspconfig.util.path.is_descendant(cwd, root) and cwd or root
+          end,
+        },
+
         -- Docker
         dockerls = {},
         docker_compose_language_service = {},
