@@ -157,6 +157,8 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+      local lspconfig = require 'lspconfig'
+
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
@@ -216,6 +218,7 @@ return {
 
         -- Golang LSP
         gopls = {
+          root_dir = lspconfig.util.root_pattern 'go.mod',
           filetypes = { 'go', 'gomod', 'gowork' },
           settings = {
             gopls = {
