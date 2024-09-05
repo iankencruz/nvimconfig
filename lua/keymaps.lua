@@ -8,11 +8,14 @@ vim.keymap.set('i', 'jk', '<ESC>')
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Diagnostic keymaps
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
 -- lazy
 vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- Close all windows and exit from Neovim with <leader> and q
-vim.keymap.set('n', '<leader>q', ':qa!<CR>', { desc = 'Close all buffers' })
+-- vim.keymap.set('n', '<leader>q', ':qa!<CR>', { desc = 'Close all buffers' })
 
 -- better indenting
 vim.keymap.set('v', '<', '<gv')
