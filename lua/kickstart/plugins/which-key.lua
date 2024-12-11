@@ -57,8 +57,9 @@ return {
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        { '<leader>d', group = '[D]ocument' },
+        { '<leader>c', group = '[C]opilot', mode = { 'n', 'x' } },
+        { '<leader>cg', group = '[C]opilot [G]it', mode = { 'n', 'x' } },
+        { '<leader>d', group = '[D]ocument LSP' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },

@@ -4,7 +4,7 @@
 --  For more options, you can see `:help option-list`
 --
 
-local indent = 2
+local indent = 4
 
 -- Make line numbers default
 vim.opt.number = true

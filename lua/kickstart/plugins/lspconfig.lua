@@ -95,7 +95,7 @@ return {
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>dws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[D]ocument [W]orkspace [S]ymbols')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
@@ -103,7 +103,7 @@ return {
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          map('<leader>da', vim.lsp.buf.code_action, 'Code [A]ction', { 'n', 'x' })
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -177,7 +177,7 @@ return {
         -- But for many setups, the LSP (`tsserver`) will work just fine
 
         -- Typescript LSP
-        tsserver = {},
+        ts_ls = {},
 
         -- Astro LSP
         astro = {},
@@ -191,13 +191,13 @@ return {
           -- to fully override the default_config, change the below
           -- filetypes = {}
           --         filetypes = { "templ", "astro", "javascript", "typescript", "react" },
-          filetypes = { 'templ', 'astro', 'javascript', 'typescript', 'react' },
+          filetypes = { 'templ', 'astro', 'javascript', 'html', 'typescript', 'react' },
           init_options = { userLanguages = { templ = 'html' } },
         },
 
         html = {
           cmd = { 'vscode-html-language-server', '--stdio' },
-          filetypes = { 'html', 'templ', 'ss' },
+          filetypes = { 'html', 'templ', 'ss', 'js' },
           single_file_support = true,
           init_options = {
             provideFormatter = true,
@@ -213,6 +213,11 @@ return {
         -- templ LSP
         templ = {
           filetypes = { 'templ', 'html' },
+        },
+
+        -- htmx LSP
+        htmx = {
+          filetypes = { 'templ', 'astro', 'html' },
         },
 
         -- Golang LSP

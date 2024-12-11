@@ -24,6 +24,7 @@ return {
         'dockerfile',
         'astro',
         'go',
+        'gotmpl',
         'templ',
         'gomod',
         'gowork',

@@ -113,13 +113,22 @@ vim.filetype.add { extension = { templ = 'templ' } }
 local autocmd = vim.api.nvim_create_autocmd
 
 -- tailwind autocmd
-autocmd({ 'BufWritePre' }, { pattern = { '*.templ', '*.astro', '*.html', '*.jsx', '*.tsx' }, command = ':silent :TailwindSort' })
-
+-- autocmd({ 'BufWritePre' }, { pattern = { '*.templ', '*.astro', '*.html', '*.jsx', '*.tsx' }, command = ':silent :TailwindSort' })
+-- tmpl autocommand
+-- autocmd({ 'BufWinEnter' }, { pattern = '*.tmpl', command = 'set filetype=html' })
+-- autocmd({ 'BufWritePre' }, { pattern = { '*.tmpl' }, callback = vim.lsp.buf.format })
 -- templ autocommand
 autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = vim.lsp.buf.format })
 
 -- silverstripe filetype set autocmd
 autocmd({ 'BufWinEnter' }, { pattern = '*.ss', command = 'set filetype=html' })
+autocmd({ 'BufWinEnter' }, { pattern = '*.ss', callback = vim.lsp.buf.format })
+
+-- Disable auto commenting on new line
+autocmd({ 'BufEnter' }, { pattern = '*', command = 'set formatoptions-=cro' })
+autocmd({ 'BufEnter' }, { pattern = '*', command = 'setlocal formatoptions-=cro' })
+vim.cmd 'autocmd BufEnter * set formatoptions-=cro'
+vim.cmd 'autocmd BufEnter * setlocal formatoptions-=cro'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+-- vim. ts=2 sts=2 sw=2 et

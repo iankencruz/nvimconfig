@@ -8,7 +8,7 @@ return {
   opts = {},
   config = function()
     -- Oil Nvim
-    vim.keymap.set('n', '\\', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
     require('oil').setup {
       default_file_explorer = true,
@@ -32,10 +32,8 @@ return {
       },
       keymaps = {
         ['<C-c>'] = false,
-        ['-'] = false,
-        ['_'] = false,
-        ['|'] = 'actions.open_cwd',
-        ['\\'] = 'actions.parent',
+        ['_'] = 'actions.open_cwd',
+        ['-'] = 'actions.parent',
         ['q'] = 'actions.close',
       },
     }
