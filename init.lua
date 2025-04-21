@@ -106,7 +106,7 @@ require 'lazy-bootstrap'
 require 'lazy-plugins'
 
 -- Add templ extension
-vim.filetype.add { extension = { templ = 'templ' } }
+-- vim.filetype.add { extension = { templ = 'templ' } }
 
 -- Autocommands
 -- Auto format on save for templ file
@@ -115,14 +115,14 @@ local autocmd = vim.api.nvim_create_autocmd
 -- tailwind autocmd
 -- autocmd({ 'BufWritePre' }, { pattern = { '*.templ', '*.astro', '*.html', '*.jsx', '*.tsx' }, command = ':silent :TailwindSort' })
 -- tmpl autocommand
--- autocmd({ 'BufWinEnter' }, { pattern = '*.tmpl', command = 'set filetype=html' })
--- autocmd({ 'BufWritePre' }, { pattern = { '*.tmpl' }, callback = vim.lsp.buf.format })
+-- autocmd({ 'BufWinEnter' }, { pattern = '*.html', command = 'set filetype=html' })
+-- autocmd({ 'BufWritePre' }, { pattern = { '*.html' }, callback = vim.lsp.buf.format })
 -- templ autocommand
-autocmd({ 'BufWritePre' }, { pattern = { '*.templ' }, callback = vim.lsp.buf.format })
+autocmd({ 'BufWritePre' }, { pattern = { '*.html' }, callback = vim.lsp.buf.format })
 
--- silverstripe filetype set autocmd
-autocmd({ 'BufWinEnter' }, { pattern = '*.ss', command = 'set filetype=html' })
-autocmd({ 'BufWinEnter' }, { pattern = '*.ss', callback = vim.lsp.buf.format })
+-- -- silverstripe filetype set autocmd
+-- autocmd({ 'BufWinEnter' }, { pattern = '*.ss', command = 'set filetype=html' })
+-- autocmd({ 'BufWinEnter' }, { pattern = '*.ss', callback = vim.lsp.buf.format })
 
 -- Disable auto commenting on new line
 autocmd({ 'BufEnter' }, { pattern = '*', command = 'set formatoptions-=cro' })

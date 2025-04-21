@@ -191,41 +191,42 @@ return {
           -- to fully override the default_config, change the below
           -- filetypes = {}
           --         filetypes = { "templ", "astro", "javascript", "typescript", "react" },
-          filetypes = { 'templ', 'astro', 'javascript', 'html', 'typescript', 'react' },
+          filetypes = { 'templ', 'astro', 'javascript', 'tmpl', 'html', 'typescript', 'react' },
           init_options = { userLanguages = { templ = 'html' } },
         },
 
         html = {
           cmd = { 'vscode-html-language-server', '--stdio' },
-          filetypes = { 'html', 'templ', 'ss', 'js' },
+          filetypes = { 'html', 'ss', 'js' },
           single_file_support = true,
           init_options = {
             provideFormatter = true,
             embeddedLanguages = { css = true, javascript = true },
-            configurationSection = { 'html', 'css', 'javascript', 'templ' },
+            configurationSection = { 'html', 'css', 'javascript', 'templ', 'tmpl' },
           },
         },
 
         emmet_language_server = {
-          filetypes = { 'templ', 'html', 'astro', 'typescript', 'react', 'ss' },
+          filetypes = { 'templ', 'html', 'tmpl', 'astro', 'typescript', 'react', 'ss' },
         },
 
         -- templ LSP
         templ = {
-          filetypes = { 'templ', 'html' },
+          filetypes = { 'templ' },
         },
 
         -- htmx LSP
         htmx = {
-          filetypes = { 'templ', 'astro', 'html' },
+          filetypes = { 'templ', 'tmpl', 'astro', 'html' },
         },
 
         -- Golang LSP
         gopls = {
           root_dir = lspconfig.util.root_pattern 'go.mod',
-          filetypes = { 'go', 'gomod', 'gowork' },
+          filetypes = { 'go', 'gomod', 'gowork', 'tmpl' },
           settings = {
             gopls = {
+              templateExtensions = { 'tmpl', 'html', 'gohtml' },
               gofumpt = false,
               codelenses = {
                 gc_details = false,
@@ -260,19 +261,6 @@ return {
               semanticTokens = false,
             },
           },
-        },
-
-        -- intelephense LSP
-        intelephense = {
-          cmd = { 'intelephense', '--stdio' },
-          filetypes = { 'php' },
-          root_dir = function(pattern)
-            local cwd = vim.loop.cwd()
-            local root = lspconfig.util.root_pattern('composer.json', '.git')(pattern)
-
-            -- prefer cwd if root is a descendant
-            return lspconfig.util.path.is_descendant(cwd, root) and cwd or root
-          end,
         },
 
         -- Docker
