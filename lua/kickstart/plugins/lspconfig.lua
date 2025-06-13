@@ -19,7 +19,7 @@ return {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-      { 'williamboman/mason.nvim', opts = {} },
+      { 'williamboman/mason.nvim', opts = { ensure_installed = { 'goimports', 'gofumpt', 'gomodifytags', 'impl', 'delve', 'prettier' } } },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -61,11 +61,11 @@ return {
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
@@ -180,11 +180,44 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
+
+        yamlls = {
+          -- Have to add this for yamlls to understand that we support line folding
+          capabilities = {
+            textDocument = {
+              foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true,
+              },
+            },
+          },
+          -- lazy-load schemastore when needed
+          on_new_config = function(new_config)
+            new_config.settings.yaml.schemas = vim.tbl_deep_extend('force', new_config.settings.yaml.schemas or {}, require('schemastore').yaml.schemas())
+          end,
+          settings = {
+            redhat = { telemetry = { enabled = false } },
+            yaml = {
+              keyOrdering = false,
+              format = {
+                enable = true,
+              },
+              validate = true,
+              schemaStore = {
+                -- Must disable built-in schemaStore support to use
+                -- schemas from SchemaStore.nvim plugin
+                enable = false,
+                -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                url = '',
+              },
+            },
+          },
+        },
+
         gopls = {
-          filetypes = { 'go', 'gomod', 'gowork', 'tmpl' },
           settings = {
             gopls = {
-              gofumpt = false,
+              gofumpt = true,
               codelenses = {
                 gc_details = false,
                 generate = true,
@@ -205,7 +238,6 @@ return {
                 rangeVariableTypes = true,
               },
               analyses = {
-                fieldalignment = true,
                 nilness = true,
                 unusedparams = true,
                 unusedwrite = true,
@@ -215,11 +247,10 @@ return {
               completeUnimported = true,
               staticcheck = true,
               directoryFilters = { '-.git', '-.vscode', '-.idea', '-.vscode-test', '-node_modules' },
-              semanticTokens = false,
+              semanticTokens = true,
             },
           },
         },
-
         -- htmx LSP
         htmx = {
           filetypes = { 'templ', 'tmpl', 'astro', 'html' },
@@ -251,6 +282,20 @@ return {
           --         filetypes = { "templ", "astro", "javascript", "typescript", "react" },
           filetypes = { 'templ', 'astro', 'javascript', 'tmpl', 'html', 'typescript', 'react' },
           init_options = { userLanguages = { templ = 'html' } },
+        },
+
+        templ = {
+          filetypes = { 'templ' },
+        },
+
+        svelte = {
+          filetypes = { 'svelte' },
+          init_options = {
+            svelte = {
+              -- Enable svelte plugin
+              plugin = true,
+            },
+          },
         },
 
         -- pyright = {},
